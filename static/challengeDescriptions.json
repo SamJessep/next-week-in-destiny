@@ -1,0 +1,9 @@
+{
+  "challenges":[
+    {"name":"Wait for It (Confluxes)", "description":"Every yellow-bar Wyvern must be killed as they are sacrificing themselves to the confluxes"},
+    {"name":"The Only Oracle for You (Oracles)", "description":"Players cannot destroy the same oracle more than once."},
+    {"name":"Out Of Its Way (Templar)", "description":"Don't let Templar teleport."},
+    {"name":"Strangers In Time (Gatekeeper)", "description":"Players must defeat the Praetorian and Wyvern at the same time."},
+    {"name":"Ensemble's Refrain (Atheon)", "description":"Each player teleported can only destroy one oracle in each spawn set."}
+  ]
+}
