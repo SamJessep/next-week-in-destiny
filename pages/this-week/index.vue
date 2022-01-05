@@ -1,23 +1,12 @@
 <template>
-  <div>
-    <Header>This week</Header>
-    <LootPage :weekData="this.thisWeeksData" />
-  </div>
+  <week :week="thisWeeksData" title="This Week"/>
 </template>
 
 <script>
-function getToday(weeks){
-  for(let i = 0; i<weeks.length; i++){
-    const week = weeks[i]
-    const date = new Date(week.date)
-    const currentDate = new Date()
-    if(date>currentDate) return weeks[i-1]
-  }
-  return weeks[0]
-}
-
-
+import Week from '~/components/Week.vue'
+import {getThisWeek} from "~/util/dateHelpers"
 export default {
+  components: { Week },
   data(){
     return{
       thisWeeksData:[]
@@ -25,7 +14,7 @@ export default {
   },
   async fetch() {
     const weeksData = await this.$axios.$get('/weeklyItems.json')
-    this.thisWeeksData = getToday(weeksData)
+    this.thisWeeksData = getThisWeek(weeksData)
   },
 }
 </script>

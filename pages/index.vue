@@ -1,31 +1,16 @@
 <template>
-  <div>
-    <Header :hide-back="true" >Next Week</Header>
-    <nuxt-link to="/this-week" data-button>This week</nuxt-link>
-    <LootPage :weekData="this.thisWeeksData" />
-  </div>
+  <week :week="thisWeeksData" title="Next Week"/>
 </template>
 
 <script>
-function getNextWeek(weeks){
-  for(const week of weeks){
-    const date = new Date(week.date)
-    const currentDate = new Date()
-    if(date>currentDate) return week
-  }
-  return weeks[0]
-}
-
+import {getNextWeek} from "~/util/dateHelpers"
 
 export default {
-  data(){
-    return{
-      thisWeeksData:[]
+  middleware:"loadJson",
+  async asyncData ({ store }) {
+    return {
+      thisWeeksData: getNextWeek(store.state.weeks)
     }
-  },
-  async fetch() {
-    const weeksData = await this.$axios.$get('/weeklyItems.json')
-    this.thisWeeksData = getNextWeek(weeksData)
-  },
+  }
 }
 </script>

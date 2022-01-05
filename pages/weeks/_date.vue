@@ -1,28 +1,23 @@
 <template>
-  <div>
-    <Header data-header>{{dateString}}</Header>
-    <LootPage :weekData="this.thisWeeksData" />
-  </div>
+  <week :week="thisWeeksData" :title="dateString"/>
 </template>
 
 <script>
+
+import {getWeek} from "~/util/dateHelpers"
+
 export default {
+  middleware:"loadJson",
   computed:{
-    date(){ 
-      return new Date(this.$route.params.date)
     },
-    dateString(){
-      return this.date.toDateString().split(" ").filter((_,index)=>index!==0).join(" ")
-    },
-  },
-  data(){
+  async asyncData({ store, route }) {
+    const date = new Date(route.params.date)
+    const dateString = date.toDateString().split(" ").filter((_,index)=>index!==0).join(" ")
     return {
-      thisWeeksData:{}
+      thisWeeksData: getWeek(store.state.weeks, date),
+      date,
+      dateString
     }
-  },
-  async fetch() {
-    const weeksData = await this.$axios.$get('/weeklyItems.json')
-    this.thisWeeksData = weeksData.find(w=>new Date(w.date).toString() == new Date(this.date).toString())
-  },
+  }
 }
 </script>

@@ -1,28 +1,23 @@
 <template>
 <div>
-  <div v-if="loaded">
-    <nuxt-link to="/this-week">This week</nuxt-link>
-    <nuxt-link v-for="week in weeks" :key="week.date" :to="'/weeks/'+week.date" style="display:block" >{{week.date}}</nuxt-link>
-  </div>
-  <div v-else>
-    <Loader/>
-  </div>
+    <nuxt-link 
+      v-for="week in $store.state.weeks" 
+      :key="week.date" 
+      :to="week == thisReset ? '/this-week' : '/weeks/'+week.date" 
+      style="display:block" >
+        {{week == thisReset ? "This Week" : week.date}}
+    </nuxt-link>
 </div>
 </template>
 
 <script>
+import {getThisWeek} from "~/util/dateHelpers"
+
 export default {
-  name: 'IndexPage',
-  async fetch() {
-    const weekData = await this.$axios.$get('/weeklyItems.json')
-    this.weeks = weekData
-    this.loaded=true
-  },
-  fetchOnServer:false,
-  data(){
+  middleware:"loadJson",
+  async asyncData({store}){
     return{
-      weeks:[],
-      loaded:false
+      thisReset:getThisWeek(store.state.weeks)
     }
   }
 }

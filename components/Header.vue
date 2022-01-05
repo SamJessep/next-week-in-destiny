@@ -1,18 +1,11 @@
 <template>
   <div class="container">
-    <nuxt-link v-if="!this.hideBack" to="/" data-button>Back</nuxt-link>
+    <nuxt-link to="/weeks" data-button>Weeks</nuxt-link>
     <h1>
       <slot/>
     </h1>
   </div>
 </template>
-
-<script>
-export default {
-  props:["hideBack"]
-}
-</script>
-
 <style scoped>
 .container{
   display: flex;
