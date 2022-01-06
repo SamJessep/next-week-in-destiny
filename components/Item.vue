@@ -1,7 +1,7 @@
 <template>
 <div class="container">
-  <img class="icon overlay" :src="item.overlay" :alt="item.name"/>
-  <img class="icon underlay" :src="item.img" :alt="item.name"/>
+  <img class="icon overlay" :src="'https://www.bungie.net/'+item.overlay_icon" :alt="item.name"/>
+  <img class="icon underlay" :src="'https://www.bungie.net/'+item.icon" :alt="item.name"/>
   <p class="name" >{{item.name}}</p>
 </div>
 </template>

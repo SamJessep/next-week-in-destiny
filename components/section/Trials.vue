@@ -5,10 +5,13 @@
     Lol no trials
   </div>
   <div v-if="this.vendor.items[0].name!='IB'">
-    <Item v-for="(item,index) in this.vendor.items" :key="index" :item="item"/>
+    <div class="item-box">
+      <Item v-for="(item,index) in this.vendor.items" :key="index" :item="item"/>
+    </div>
     <div class="map-box">
-      <img :src="mapImage" :alt="this.vendor.map" class="map" @error="this.useFallbackImage"/>
-      <p class="map-name">{{this.vendor.map}}</p>
+      <img :src="mapImage" :alt="this.vendor.map" class="map"/>
+      <div class="map-overlay"></div>
+      <p class="map-name">{{this.vendor.map.name}}</p>
     </div>
   </div>
 </Section>
@@ -19,33 +22,9 @@ export default {
   props:["vendor"],
   data:function(){
     return {
-      mapImage:`https://www.bungie.net/img/destiny_content/pgcr/crucible_${this.vendor.map.split(' ').join('').toLowerCase()}.jpg`
+      mapImage:`https://www.bungie.net/${this.vendor.map.backdrop}`
     }
   },
-  methods:{
-    useFallbackImage: function(){
-      this.mapImage = `https://www.bungie.net/img/destiny_content/pgcr/pvp_${this.vendor.map.split(' ').join('').toLowerCase()}.jpg`
-    }
-  }
 }
 </script>
 
-<style scoped>
-  .map-box{
-    max-width: 100%;
-    position: relative;
-  }
-
-  .map{
-    max-width: 100%;
-  }
-
-  .map-name{
-    display: block;
-    background-color: hsla(0deg 0deg 0deg 200%);
-    width: 100%;
-    position: absolute;
-    bottom:0;
-    margin: 0;
-  }
-</style>
