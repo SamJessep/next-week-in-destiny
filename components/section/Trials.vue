@@ -8,8 +8,10 @@
     <div class="item-box">
       <Item v-for="(item,index) in this.vendor.items" :key="index" :item="item"/>
     </div>
-    <div class="map-box">
-      <img :src="mapImage" :alt="this.vendor.map" class="map"/>
+    <div class="map-box outer">
+      <div class="map-container">
+        <img :src="mapImage" :alt="this.vendor.map" class="map"/>
+      </div>
       <div class="map-overlay"></div>
       <p class="map-name">{{this.vendor.map.name}}</p>
     </div>
