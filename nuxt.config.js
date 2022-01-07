@@ -1,3 +1,5 @@
+import weeks from './data/weeklyItems.json';
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -41,6 +43,13 @@ export default {
     '@nuxt/content',
   ],
   middleware:["loadJson"],
+  generate:{
+    routes(){
+      return weeks.map(week => {
+          return '/weeks/' + week.date
+      })
+    }
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
