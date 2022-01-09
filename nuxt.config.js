@@ -31,6 +31,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
+    '@nuxtjs/pwa',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -59,8 +60,21 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    icon:{
+      fileName:"app-icon.png"
+    },
     manifest: {
       lang: 'en',
+      name:"next week in destiny",
+      short_name:"next week in destiny",
+      theme_color:"#f2c161",
+      background_color:"#14191e"
+    },
+    workbox:{
+      offlineStrategy:"StaleWhileRevalidate",
+      runtimeCaching: [
+        {urlPattern:"https://www.bungie.net/.*"}
+      ]
     },
   },
 

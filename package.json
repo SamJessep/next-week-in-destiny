@@ -1,6 +1,7 @@
 {
   "name": "next-week-in-destiny",
   "version": "1.0.0",
+  "description": "App to show the rotated items and maps for destiny 2",
   "private": true,
   "scripts": {
     "dev": "nuxt",
