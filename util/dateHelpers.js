@@ -20,3 +20,15 @@ export const getNextWeek = weeks =>{
 export const getWeek = (weeks,date)=>{
   return weeks.find(w=>new Date(w.date).toLocaleDateString() == new Date(date).toLocaleDateString())
 }
+
+export const getWeekWithOffset = (weeks, baseDate,weekOffsetFromLastReset) =>{
+  for(let i = 0; i<weeks.length; i++){
+    const week = weeks[i]
+    const date = new Date(week.date)
+    const currentDate = new Date(baseDate)
+    if(date>currentDate){
+      console.log(weeks[i-1])
+      return weeks[(i-1)+weekOffsetFromLastReset] 
+    }
+  }
+}
