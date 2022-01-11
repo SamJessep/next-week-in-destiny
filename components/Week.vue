@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :week="title" >{{title}}</Header>
+    <Header :week="week.date" >{{title}}</Header>
     <LootPage :weekData="week" />
   </div>
 </template>

@@ -11,19 +11,34 @@
       class="week-item"
       v-for="week in $store.state.weeks" 
       :key="week.date" 
-      :to="week == thisReset ? '/this-week' : '/weeks/'+week.date"
+      :to="'/weeks/'+week.date"
     >
-        {{week == thisReset ? "This Week" : week.date}}
+        {{week.date}}
     </nuxt-link>
+
+    <div class="quick-bar">
+      <nuxt-link data-button
+        class="sticky-button"
+        :to="'/weeks/'+nextReset.date"
+      >
+        This Week
+      </nuxt-link>
+      <nuxt-link data-button
+        class="sticky-button"
+        :to="'/weeks/'+thisReset.date"
+      >
+        Next Week
+      </nuxt-link>
+    </div>
   </div>
   <div class="controls-container">
-    <nuxt-link :to="'/weeks/'+getLastWeek().date" data-button data-page-control>◄</nuxt-link>
+    <nuxt-link :to="lastWeek? ('/weeks/'+lastWeek.date) : '#'" data-button data-page-control :class="'left'+(lastWeek?'':' disabled')" >◄</nuxt-link>
     <button class="open-btn" data-button @click="toggleOpenState">
       <span class="arrow down"/>
       <span class="btn-title">Weeks</span>
       <span class="arrow down"/>
     </button>
-    <nuxt-link :to="'/weeks/'+getNextWeek().date" data-button data-page-control>►</nuxt-link>
+    <nuxt-link :to="nextWeek?('/weeks/'+nextWeek.date):'#'" data-button data-page-control :class="'right'+(nextWeek?'':' disabled')" >►</nuxt-link>
   </div>
 </div>
 </template>
@@ -35,8 +50,19 @@ export default {
   props:["weeks", "shownWeek"],
   computed:{
     thisReset(){
-        return getThisWeek(this.weeks)
-      }
+      return getThisWeek(this.weeks)
+    },
+    nextReset(){
+      return getWeekWithOffset(this.weeks,new Date(), 1)
+    },
+    nextWeek(){
+      console.log("NEXT", getWeekWithOffset(this.weeks,this.shownWeek, 1))
+      return getWeekWithOffset(this.weeks,this.shownWeek, 1)
+    },
+    lastWeek(){
+      console.log("LAST", getWeekWithOffset(this.weeks,this.shownWeek, -1))
+      return getWeekWithOffset(this.weeks,this.shownWeek, -1)
+    }
   },
   data(){
     return{
@@ -49,12 +75,6 @@ export default {
     },
     setOpenState(state){
       this.open=state
-    },
-    getLastWeek(){
-      return getWeekWithOffset(this.weeks,this.shownWeek, 0)
-    },
-    getNextWeek(){
-      return getWeekWithOffset(this.weeks,this.shownWeek, 2)
     }
   },
 }
@@ -92,15 +112,17 @@ export default {
 
 .weeks-holder{
   background-color: #212833;
-  position: absolute;
+  position: fixed;
   width: 100%;
   display: flex;
   flex-direction: column;
   z-index: 10;
-  padding-bottom: 2rem;
   padding-top:0.5rem;
   border-radius: 0 0 0.5rem 0.5rem;
 	transition: top 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
 }
 
 
@@ -137,12 +159,12 @@ export default {
 
 .arrow::before{
   position: absolute;
-  transform: rotate(0) translate(0, 0.5rem);
+  transform: rotate(0)  translate(-0.45rem, 0);
 }
 
 .arrow::after{
   position: absolute;
-  transform: rotate(0)  translate(-0.4rem, 0.1rem);
+  transform: rotate(0) translate(-0.1rem, 0.35rem);
 }
 
 [data-button]:hover>.arrow::after, [data-button]:hover>.arrow::before{
@@ -157,7 +179,46 @@ export default {
   font-size: 2rem;
 }
 
+[data-page-control].right{
+  margin-left: 0.7rem;
+}
+
+[data-page-control].left{
+  margin-right: 0.7rem;
+}
+
 .btn-title{
   padding: 0 10px;
+}
+
+.quick-bar{
+  position: sticky;
+  bottom: 0;
+  background-color: #212833;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  gap:2rem;
+  text-align: center;
+}
+
+[data-button].sticky-button{
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  flex-grow:1;
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+[data-button].sticky-button.nuxt-link-active{
+  background-color: #626262;
+  color: #a1a1a1;
+  cursor: auto;
+  pointer-events: none;
+}
+
+[data-button].sticky-button.nuxt-link-active::after{
+  border: transparent;
 }
 </style>

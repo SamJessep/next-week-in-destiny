@@ -12,7 +12,10 @@ export const getNextWeek = weeks =>{
   for(const week of weeks){
     const date = new Date(week.date)
     const currentDate = new Date()
-    if(date>currentDate) return week
+    if(date>currentDate){
+      console.log(week)
+      return week
+    }
   }
   return weeks[0]
 }
@@ -23,12 +26,14 @@ export const getWeek = (weeks,date)=>{
 
 export const getWeekWithOffset = (weeks, baseDate,weekOffsetFromLastReset) =>{
   for(let i = 0; i<weeks.length; i++){
-    const week = weeks[i]
+    const week = weeks[i] 
     const date = new Date(week.date)
     const currentDate = new Date(baseDate)
     if(date>currentDate){
-      console.log(weeks[i-1])
       return weeks[(i-1)+weekOffsetFromLastReset] 
+    }else if(date.toDateString() == currentDate.toDateString()){
+      return weeks[i+weekOffsetFromLastReset]
     }
   }
+  return false
 }

@@ -150,7 +150,7 @@ summary:before {
   animation-timing-function: cubic-bezier(0.69, 0, 0, 1) !important;
   border-color: #ffce1f;
 }
-[data-button]:hover::after, [data-button]:focus::after{
+[data-button]:not(.disabled):hover::after, [data-button]:not(.disabled):focus::after{
   top: -5px;
   left: -5px;
   right: -5px;
@@ -159,20 +159,26 @@ summary:before {
 }
 
 [data-page-control]{
-  background-color: grey;
-  color:darkgray;
+  background-color: #747474bf;
+  color:#dfdfdf;
   padding: 0 10px;
   display: block;
   height: 100%;
 }
 
 [data-page-control]::after{
-  border-color:white;
+  border-color:transparent;
 }
 
 [data-page-control]:hover,[data-page-control]:focus{
-  background-color: rgb(197, 197, 197);
-  color:rgb(78, 78, 78);
+  background-color: rgb(133 132 132);
+  color:#dfdfdf;
+}
+
+[data-page-control].disabled{  
+  background-color: #626262;
+  color: #7c7c7c;
+  cursor: auto;
 }
 
 .map-box{
