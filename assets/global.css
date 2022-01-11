@@ -161,7 +161,7 @@ summary:before {
 [data-page-control]{
   background-color: grey;
   color:darkgray;
-  padding: 0;
+  padding: 0 10px;
   display: block;
   height: 100%;
 }

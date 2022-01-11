@@ -3,7 +3,7 @@
   <div class="weeks-holder" :style="'top:'+ (open? '0' : '-110vh')" >
     <button @click="()=>setOpenState(false)" data-button class="close-btn">
       <span class="arrow up"/>
-      Close
+      <span class="btn-title">Close</span>
       <span class="arrow up"/>
     </button>
     <h2>Weeks</h2>
@@ -20,7 +20,7 @@
     <nuxt-link :to="'/weeks/'+getLastWeek().date" data-button data-page-control>◄</nuxt-link>
     <button class="open-btn" data-button @click="toggleOpenState">
       <span class="arrow down"/>
-      Weeks
+      <span class="btn-title">Weeks</span>
       <span class="arrow down"/>
     </button>
     <nuxt-link :to="'/weeks/'+getNextWeek().date" data-button data-page-control>►</nuxt-link>
@@ -79,7 +79,9 @@ export default {
 }
 
 .open-btn{
-  width: 50vw;
+  /* width: 50vw; */
+  flex-grow: 1;
+  max-width: 450px;
 }
 
 .weeks-container{
@@ -115,8 +117,8 @@ export default {
 
 
 .arrow, .arrow::after, .arrow::before{
-  width: 30px;
-  height: 30px;
+  width: 1rem;
+  height: 1rem;
   border-top: solid #212833 5px;
   border-left: solid #212833 5px;
   content: "";
@@ -135,19 +137,27 @@ export default {
 
 .arrow::before{
   position: absolute;
-  transform: rotate(0) translate(-4px, 10px)
+  transform: rotate(0) translate(0, 0.5rem);
 }
 
 .arrow::after{
   position: absolute;
-  transform: rotate(0)  translate(-12px, 2px);
+  transform: rotate(0)  translate(-0.4rem, 0.1rem);
 }
 
 [data-button]:hover>.arrow::after, [data-button]:hover>.arrow::before{
-  transform: rotate(0) translate(-20px, -5px);
+  transform: rotate(0) translate(-0.8rem, -0.3rem);
 }
 
 [data-button]:hover>.arrow, [data-button]:hover>.arrow::after, [data-button]:hover>.arrow::before{
   border-color:rgb(240 221 184);
+}
+
+[data-page-control]{
+  font-size: 2rem;
+}
+
+.btn-title{
+  padding: 0 10px;
 }
 </style>
