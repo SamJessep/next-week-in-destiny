@@ -17,13 +17,13 @@
     </nuxt-link>
   </div>
   <div class="controls-container">
-    <nuxt-link :to="'/weeks/'+getLastWeek().date" data-button>Last Week {{getLastWeek().date}}</nuxt-link>
+    <nuxt-link :to="'/weeks/'+getLastWeek().date" data-button data-page-control>◄</nuxt-link>
     <button class="open-btn" data-button @click="toggleOpenState">
       <span class="arrow down"/>
       Weeks
       <span class="arrow down"/>
     </button>
-    <nuxt-link :to="'/weeks/'+getNextWeek().date" data-button>Next Week {{getNextWeek().date}}</nuxt-link>
+    <nuxt-link :to="'/weeks/'+getNextWeek().date" data-button data-page-control>►</nuxt-link>
   </div>
 </div>
 </template>
@@ -62,7 +62,7 @@ export default {
 
 <style scoped>
 [data-button]{
-  height: min-content;
+  /* height: min-content; */
   margin: auto 0;
   display: flex;
   justify-content: space-between;
