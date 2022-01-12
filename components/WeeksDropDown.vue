@@ -144,7 +144,8 @@ export default {
   border-top: solid #212833 5px;
   border-left: solid #212833 5px;
   content: "";
-  transition: transform 1s;
+  transition: top 1s cubic-bezier(0.34, 1.56, 0.64, 1), left 1s cubic-bezier(0.34, 1.56, 0.64, 1),border-color 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: block;
 }
 
 .arrow.up{
@@ -159,16 +160,19 @@ export default {
 
 .arrow::before{
   position: absolute;
-  transform: rotate(0)  translate(-0.45rem, 0);
+  top:9px;
+  left:9px;
 }
 
 .arrow::after{
   position: absolute;
-  transform: rotate(0) translate(-0.1rem, 0.35rem);
+  top:2px;
+  left:2px;
 }
 
 [data-button]:hover>.arrow::after, [data-button]:hover>.arrow::before{
-  transform: rotate(0) translate(-0.8rem, -0.3rem);
+  top:-5px;
+  left:-5px;
 }
 
 [data-button]:hover>.arrow, [data-button]:hover>.arrow::after, [data-button]:hover>.arrow::before{
