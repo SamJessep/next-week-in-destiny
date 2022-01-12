@@ -92,5 +92,4 @@ function printProgress(progress:number){
   process.stdout.write(Math.floor(progress*100) + '%');
 }
 
-// run()
-console.log(process.env)
+run()
