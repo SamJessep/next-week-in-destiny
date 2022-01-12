@@ -40,7 +40,7 @@ const run = async()=>{
         for(let index of Object.keys(items)){
           const key = keyRow[index].toUpperCase()
           cellsProcessed++;
-          printProgress(cellsProcessed/totalCells)
+          // printProgress(cellsProcessed/totalCells)
           if(["N/A","?","IB"].includes(items[index])) continue
           if(key.includes("GUN")) items[index] = await MakeGun(items[index])
           if(key.includes("MAP")) items[index] = await MakeMap(items[index])
