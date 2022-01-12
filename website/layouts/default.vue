@@ -22,12 +22,5 @@ export default {
       this.modalOpen=open
     }
   }
-//   created() {
-//     this.unsubscribe = this.$store.subscribe((mutation, state) => {
-//       if (mutation.type === 'SHOW_DIALOG') {
-//         console.log(`Updating to ${state.status}`);       
-//       }
-//     });
-// },
 }
 </script>

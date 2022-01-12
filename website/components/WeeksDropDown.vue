@@ -56,11 +56,9 @@ export default {
       return getWeekWithOffset(this.weeks,new Date(), 1)
     },
     nextWeek(){
-      console.log("NEXT", getWeekWithOffset(this.weeks,this.shownWeek, 1))
       return getWeekWithOffset(this.weeks,this.shownWeek, 1)
     },
     lastWeek(){
-      console.log("LAST", getWeekWithOffset(this.weeks,this.shownWeek, -1))
       return getWeekWithOffset(this.weeks,this.shownWeek, -1)
     }
   },

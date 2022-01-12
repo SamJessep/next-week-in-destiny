@@ -24,7 +24,6 @@ export default {
   },
   computed:{
     isSinglePlug(){
-      console.log(this.plugs,Array.isArray(this.plugs))
       return Array.isArray(this.plugs)
     }
   }

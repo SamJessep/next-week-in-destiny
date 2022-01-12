@@ -19,9 +19,6 @@
 <script>
 export default {
   props:["title", "closeModal", "item"],
-  created(){
-    console.log(this.item)
-  }
 }
 </script>
 
