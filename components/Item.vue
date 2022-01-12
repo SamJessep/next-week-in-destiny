@@ -1,14 +1,28 @@
 <template>
-<div class="container">
+<div>
+
+<button class="container link" @click="toggleRollOverlay(true)">
   <img class="icon overlay" :src="'https://www.bungie.net/'+item.overlay_icon" :alt="item.name"/>
   <img class="icon underlay" :src="'https://www.bungie.net/'+item.icon" :alt="item.name"/>
   <p class="name" >{{item.name}}</p>
+</button>
+  <ItemPerkOverlay :title="item.name" :open="rollsOpen"/>
 </div>
 </template>
 
 <script>
 export default {
-  props:["item"]
+  props:["item"],
+  data(){
+    return{
+      rollsOpen:false
+    }
+  },
+  methods:{
+    toggleRollOverlay(open){
+      this.rollsOpen=open
+    }
+  }
 }
 </script>
 
@@ -17,6 +31,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1rem;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 .overlay{
@@ -30,4 +46,7 @@ export default {
 .name{
   margin-left: 1rem;
 }
+
+
+
 </style>
