@@ -13,7 +13,6 @@ export const getNextWeek = weeks =>{
     const date = new Date(week.date)
     const currentDate = new Date()
     if(date>currentDate){
-      console.log(week)
       return week
     }
   }

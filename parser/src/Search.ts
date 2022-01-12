@@ -23,7 +23,7 @@ export const Search =  async (term:string, defType:string) : Promise<WeaponSearc
 }
 
 export const Details = async <T> (hash:number, defType:string) :Promise<T> =>{
-  return getItemByHash('src/data/'+defType,hash.toString())
+  return getItemByHash('src/data/'+defType+'.json',hash.toString())
 }
 
 export const CreateWeaponJSON = async (name:string):Promise<WeaponJSON|undefined> =>{

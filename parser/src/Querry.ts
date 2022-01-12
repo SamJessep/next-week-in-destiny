@@ -4,7 +4,7 @@ export const ITEM_DEFS = "src/data/DestinyInventoryItemDefinition.json"
 export const SOCKET_DEFS = "src/data/DestinySocketTypeDefinition.json"
 
 export const getItemByHash = (manifestType:string, hash:string)=>{
-  var data = fs.readFileSync(manifestType)
+  var data = fs.readFileSync(manifestType,{encoding:'utf8'})
   const json = JSON.parse(data)
   return json[hash]
 }
