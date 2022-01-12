@@ -6,11 +6,13 @@
   <img class="icon underlay" :src="'https://www.bungie.net/'+item.icon" :alt="item.name"/>
   <p class="name" >{{item.name}}</p>
 </button>
-  <ItemPerkOverlay :title="item.name" :open="rollsOpen"/>
+  <!-- <ItemPerkOverlay :title="item.name" :open="rollsOpen" :toggleRollOverlay="toggleRollOverlay"/> -->
 </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   props:["item"],
   data(){
@@ -19,8 +21,11 @@ export default {
     }
   },
   methods:{
+
+    ...mapMutations(["SHOW_DIALOG","HIDE_DIALOG"]),
     toggleRollOverlay(open){
       this.rollsOpen=open
+      this.SHOW_DIALOG({name:"ItemPerkOverlay",props:{title:this.item.name, item:this.item}})
     }
   }
 }

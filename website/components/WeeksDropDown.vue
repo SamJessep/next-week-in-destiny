@@ -19,13 +19,13 @@
     <div class="quick-bar">
       <nuxt-link data-button
         class="sticky-button"
-        :to="'/weeks/'+nextReset.date"
+        :to="'/weeks/'+thisReset.date"
       >
         This Week
       </nuxt-link>
       <nuxt-link data-button
         class="sticky-button"
-        :to="'/weeks/'+thisReset.date"
+        :to="'/weeks/'+nextReset.date"
       >
         Next Week
       </nuxt-link>
