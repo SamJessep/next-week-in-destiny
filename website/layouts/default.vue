@@ -2,7 +2,6 @@
 <div>
   <Nuxt/>
   <Modal :modalComponent="$store.state.modalComponent" :modalProps="$store.state.modalProps" :shown="$store.state.showModal"/>
-  {{$store.state.showModal}}
 </div>
 </template>
 
