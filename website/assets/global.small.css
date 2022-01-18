@@ -1,0 +1,15 @@
+@media only screen and (max-width: 400px) {
+  .item-box:not(.no-map){
+    position: relative;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .item-box .icon{
+    width: 60px;
+  }
+
+  .item-box .name{
+    font-size: 0.85rem;
+  }
+}

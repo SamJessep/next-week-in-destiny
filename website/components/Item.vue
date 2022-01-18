@@ -41,7 +41,7 @@ export default {
 .container{
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   cursor: pointer;
   background-color: transparent;
 }
@@ -50,9 +50,7 @@ export default {
   position: absolute;
 }
 
-.icon{
-  width:80px;
-}
+
 
 .name{
   margin-left: 1rem;

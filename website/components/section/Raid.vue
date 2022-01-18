@@ -1,6 +1,8 @@
 <template>
 <Section name="Vault of glass - Master">
-  <Item v-for="(item,index) in this.vendor.items" :key="index" :item="item"/>
+  <div class="item-box no-map">
+    <Item v-for="(item,index) in this.vendor.items" :key="index" :item="item"/>
+  </div>
   <Section :name="this.challenge.name">
     {{this.challenge.description}} 
   </Section>
