@@ -31,12 +31,11 @@ export default {
     const popupEl = this.$refs["popup"]
     popupEl.style.display = 'block';
 
-    const a = tippy("."+this.id, {
+    tippy("."+this.id, {
       theme:"destiny-weapon-perk",
       content:popupEl,
       allowHTML: true,
     })
-    console.log(a)
   }
 }
 </script>
