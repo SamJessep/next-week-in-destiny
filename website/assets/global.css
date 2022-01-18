@@ -241,3 +241,40 @@ summary:before {
   border-radius: 0rem 0rem 1rem 0rem;
   cursor: unset;
 }
+
+/* TIPPY THEME */
+.tippy-box[data-theme~='destiny-weapon-perk'] {
+  border-top: solid rgb(197 197 197) 5px;
+  border-radius: 0;
+  background-color: rgba(37, 37, 37, 0.842);
+}
+
+.tippy-box[data-theme~='destiny-weapon-perk'] .tippy-content{
+  margin: 0;
+  padding: 0;
+}
+
+.tippy-box[data-theme~='destiny-weapon-perk'] .header{
+  background-color: black;
+  padding: 0.5rem;
+}
+
+.tippy-box[data-theme~='destiny-weapon-perk'] .header h1{
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.tippy-box[data-theme~='destiny-weapon-perk'] .header h2{
+  font-size: 0.75rem;
+  margin: 0;
+  padding: 0;
+  color:rgb(156, 156, 156);
+}
+
+.tippy-box[data-theme~='destiny-weapon-perk'] .content{
+  background-color: transparent;
+  padding: 0rem 0.5rem 0.25rem 0.5rem;
+  margin: 0;
+  color: #e6e6e6;
+}

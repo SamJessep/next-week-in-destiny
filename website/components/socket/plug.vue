@@ -1,23 +1,42 @@
 <template>
   <div class="perk">
-    <button class="plug-icon-box outer reset-styles" :title="name">
+    <button :class="'plug-icon-box outer reset-styles ' + id" :title="name">
       <div class="plug-icon-container">
-        <img :src="'https://www.bungie.net/'+icon" :alt="name" class="plug-icon"/>
+        <img :src="'https://www.bungie.net'+icon" :alt="name" class="plug-icon"/>
       </div>
     </button>
-    <div class="popup">
-      {{description}}
+    <div ref="popup" class="popup">
+      <div class="header container">
+        <h1>{{name.toUpperCase()}}</h1>
+        <h2>{{columnName}}</h2>
+      </div>
+      <div class="content container">
+        <p>{{description}}</p>
+      </div>
     </div>
   </div>
+
 </template>
 
 <script>
+import tippy from 'tippy.js';
 export default {
-  props:["name", "description", "icon","iconSequences"],
+  props:["name", "description", "icon","iconSequences", "id", "columnName"],
   data(){
     return{
       plugPopupOpen:false
     }
+  },
+  mounted(){
+    const popupEl = this.$refs["popup"]
+    popupEl.style.display = 'block';
+
+    const a = tippy("."+this.id, {
+      theme:"destiny-weapon-perk",
+      content:popupEl,
+      allowHTML: true,
+    })
+    console.log(a)
   }
 }
 </script>
@@ -56,17 +75,7 @@ export default {
 
 .popup{
   display: none;
-  position: relative;
-  background-color: #212833;
-  z-index: 10;
-  left:100%;
-  width: max-content;
-  padding: 0 1rem;
-  white-space: pre;
 }
 
-.plug-icon-box:focus+.popup{
-  display: block;
-}
 
 </style>

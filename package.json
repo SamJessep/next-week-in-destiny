@@ -4,7 +4,10 @@
   "description": "next week in destiny backend parser and website",
   "main": "index.js",
   "scripts": {
-    "deploy":"cd parser && npm i && npm run generate && cd ../website && npm i && npm run generate"
+    "deploy":"cd parser && npm i && npm run generate && cd ../website && npm i && npm run generate",
+    "dev": "cd website && npm run dev",
+    "dev-parser": "cd parser && npm run dev",
+    "generate": "cd parser && npm run generate"
   },
   "repository": {
     "type": "git",

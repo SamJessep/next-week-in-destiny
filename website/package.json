@@ -14,7 +14,7 @@
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:js && npm run lint:style && npm run lint:prettier",
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix && npm run lint:style -- --fix",
-    "test":"npx jest"
+    "test": "npx jest"
   },
   "lint-staged": {
     "*.{js,ts,vue}": "eslint --cache",
@@ -27,6 +27,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.19.3",
     "nuxt": "^2.15.8",
+    "tippy.js": "^6.3.7",
     "vant": "^2.12.36",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",

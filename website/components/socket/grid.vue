@@ -1,7 +1,7 @@
 <template>
   <div class="grid">
     <div class="column" v-for="(socket,index) in sockets" :key="index">
-      <socketPlugs :plugs="socket.plugs" v-if="socket.name"/>
+      <socketPlugs :plugs="socket.plugs" v-if="socket.name" :column="index" :columnName="socket.name"/>
     </div>
   </div>
 </template>
