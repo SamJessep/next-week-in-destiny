@@ -1,18 +1,16 @@
 <template>
 <div>
-
-<button class="container link" @click="toggleRollOverlay(true)">
-  <img class="icon overlay" :src="'https://www.bungie.net/'+item.overlay_icon" :alt="item.name"/>
-  <img class="icon underlay" :src="'https://www.bungie.net/'+item.icon" :alt="item.name"/>
-  <p class="name" >{{item.name}}</p>
-</button>
-  <!-- <ItemPerkOverlay :title="item.name" :open="rollsOpen" :toggleRollOverlay="toggleRollOverlay"/> -->
+  <button class="container link" @click="toggleRollOverlay(true)">
+    <img class="icon overlay" :src="overlayIcon" :alt="item.name"/>
+    <img class="icon underlay" :src="icon" :alt="item.name"/>
+    <p class="name" >{{item.name}}</p>
+  </button>
 </div>
 </template>
 
 <script>
 import { mapMutations } from 'vuex';
-
+import {BUNGIE_URL} from "~/data/constants.js"
 export default {
   props:["item"],
   data(){
@@ -20,12 +18,20 @@ export default {
       rollsOpen:false
     }
   },
+  computed:{
+    overlayIcon(){
+      return BUNGIE_URL+ this.item.overlay_icon
+    },
+    icon(){
+      return BUNGIE_URL+this.item.icon
+    }
+  },
   methods:{
 
     ...mapMutations(["SHOW_DIALOG","HIDE_DIALOG"]),
     toggleRollOverlay(open){
       this.rollsOpen=open
-      this.SHOW_DIALOG({name:"ItemPerkOverlay",props:{title:this.item.name, item:this.item}})
+      this.SHOW_DIALOG({name:"OverlayItemDetails",props:{title:this.item.name, item:this.item}})
     }
   }
 }

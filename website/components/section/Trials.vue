@@ -8,13 +8,7 @@
     <div class="item-box">
       <Item v-for="(item,index) in this.vendor.items" :key="index" :item="item"/>
     </div>
-    <div class="map-box outer">
-      <div class="map-container">
-        <img :src="mapImage" :alt="this.vendor.map" class="map"/>
-      </div>
-      <div class="map-overlay"></div>
-      <p class="map-name">{{this.vendor.map.name}}</p>
-    </div>
+    <sectionMap :map="this.vendor.map"/>
   </div>
 </Section>
 </template>
@@ -26,7 +20,7 @@ export default {
     return {
       mapImage:`https://www.bungie.net/${this.vendor.map.backdrop}`
     }
-  },
+  }
 }
 </script>
 
