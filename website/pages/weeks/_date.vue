@@ -1,23 +1,40 @@
 <template>
-  <week :week="thisWeeksData" :title="dateString"/>
+  <WeeklyLoot :weekData="thisWeeksData"/>
 </template>
 
 <script>
+import {getWeek, getNextWeek, getThisWeek} from "~/util/dateHelpers"
+import { mapMutations } from 'vuex';
 
-import {getWeek} from "~/util/dateHelpers"
+const getHeaderTitle = (week,weeks) =>{
+  const nextWeek = getNextWeek(weeks)
+  const thisWeek = getThisWeek(weeks)
+  if(week.date == thisWeek.date) return "This Week"
+  else if(week.date == nextWeek.date) return "Next Week"
+  else return week.date
+}
+
 
 export default {
   middleware:"loadJson",
-  computed:{
-    },
+  methods:{
+    ...mapMutations(["SET_HEADER_PROPS"]),
+  },
   async asyncData({ store, route }) {
     const date = new Date(route.params.date)
     const dateString = date.toDateString().split(" ").filter((_,index)=>index!==0).join(" ")
     return {
       thisWeeksData: getWeek(store.state.weeks, date),
       date,
-      dateString
+      dateString,
+      weeks:store.state.weeks
     }
+  },
+  mounted(){
+    this.SET_HEADER_PROPS({
+      week:this.thisWeeksData,
+      title:getHeaderTitle(this.thisWeeksData, this.weeks)
+    })
   }
 }
 </script>

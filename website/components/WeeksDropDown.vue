@@ -12,6 +12,7 @@
       v-for="week in $store.state.weeks" 
       :key="week.date" 
       :to="'/weeks/'+week.date"
+      @click.native="()=>setOpenState(false)"
     >
         {{week.date}}
     </nuxt-link>
@@ -75,6 +76,9 @@ export default {
       this.open=state
     }
   },
+  mounted(){
+    console.log("MOUNTED")
+  }
 }
 </script>
 
