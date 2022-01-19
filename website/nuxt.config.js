@@ -49,7 +49,8 @@ export default {
       return weeks.map(week => {
           return '/weeks/' + week.date
       })
-    }
+    },
+    fallback:true
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
