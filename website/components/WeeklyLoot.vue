@@ -1,9 +1,9 @@
 <template>
-<div v-if="'vendors' in this.weekData">
+<main v-if="'vendors' in this.weekData">
   <SectionTrials :vendor="this.weekData.vendors.trials"/>
   <SectionRaid :vendor="this.weekData.vendors.raid"/>
   <SectionGrandMaster :vendor="this.weekData.vendors.gm"/>
-</div>
+</main>
 </template>
 
 <script>
@@ -12,3 +12,13 @@ export default {
   props:["weekData"],
 }
 </script>
+
+<style>
+main{
+  grid-area: content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+</style>

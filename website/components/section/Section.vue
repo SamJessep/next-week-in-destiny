@@ -1,5 +1,5 @@
 <template>
-  <details open data-panel>
+  <details open data-panel :class="className">
   <summary>{{name}}</summary>
     <slot></slot>
   </details>
@@ -7,6 +7,6 @@
 
 <script>
 export default {
-  props:["name"]
+  props:["name", "className"]
 }
 </script>

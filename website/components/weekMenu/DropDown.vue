@@ -75,9 +75,6 @@ export default {
     setOpenState(state){
       this.open=state
     }
-  },
-  mounted(){
-    console.log("MOUNTED")
   }
 }
 </script>

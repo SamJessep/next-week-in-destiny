@@ -1,5 +1,5 @@
 <template>
-<Section name="Vault of glass - Master">
+<Section name="Vault of glass - Master" className="section">
   <div class="item-box no-map">
     <Item v-for="(item,index) in this.vendor.items" :key="index" :item="item"/>
   </div>

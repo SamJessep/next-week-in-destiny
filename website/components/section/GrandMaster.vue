@@ -1,5 +1,5 @@
 <template>
-<Section name="Nightfall - Grandmaster">
+<Section name="Nightfall - Grandmaster" className="section">
   <div class="item-box">
     <Item v-for="(item,index) in this.vendor.items" :key="index" :item="item"/>
   </div>

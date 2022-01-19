@@ -60,7 +60,6 @@ body{
   font-size: 1rem;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
-  padding: 0.5rem;
 }
 
 details summary::-webkit-details-marker {
@@ -81,8 +80,12 @@ summary {
   padding-left: 2.2rem;
 }
 
+details.section{
+  max-width: 700px;
+  width: min(90vw, max(50vw, 500px));
+}
+
 details {
-  max-width: 500px;
   box-sizing: border-box;
   margin-top: 5px;
   background: white;

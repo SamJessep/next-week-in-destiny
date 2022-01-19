@@ -1,5 +1,5 @@
 <template>
-<Section name="Trials of osiris - Flawless">
+<Section name="Trials of osiris - Flawless" className="section">
   <div v-if="this.vendor.items[0].name=='IB'">
     <img src="https://www.bungie.net/common/destiny2_content/icons/0ee91b79ba1366243832cf810afc3b75.jpg" alt="Iron banner">
     Lol no trials
