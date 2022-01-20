@@ -1,9 +1,9 @@
-import {weeks} from './data/appData.json';
+import { weeks } from './data/appData.json'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  ssr:false,
+  ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'next-week-in-destiny',
@@ -17,7 +17,11 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['vant/lib/index.css', '~/assets/global.css','~/assets/global.small.css'],
+  css: [
+    'vant/lib/index.css',
+    '~/assets/global.css',
+    '~/assets/global.small.css',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['@/plugins/vant'],
@@ -43,14 +47,14 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
   ],
-  middleware:["loadJson"],
-  generate:{
-    routes(){
-      return weeks.map(week => {
-          return '/weeks/' + week.date
+  middleware: ['loadJson'],
+  generate: {
+    routes() {
+      return weeks.map((week) => {
+        return '/weeks/' + week.date
       })
     },
-    fallback:true
+    fallback: true,
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -61,21 +65,19 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
-    icon:{
-      fileName:"app-icon.png"
+    icon: {
+      fileName: 'app-icon.png',
     },
     manifest: {
       lang: 'en',
-      name:"next week in destiny",
-      short_name:"next week in destiny",
-      theme_color:"#f2c161",
-      background_color:"#14191e"
+      name: 'next week in destiny',
+      short_name: 'next week in destiny',
+      theme_color: '#f2c161',
+      background_color: '#14191e',
     },
-    workbox:{
-      offlineStrategy:"StaleWhileRevalidate",
-      runtimeCaching: [
-        {urlPattern:"https://www.bungie.net/.*"}
-      ]
+    workbox: {
+      offlineStrategy: 'StaleWhileRevalidate',
+      runtimeCaching: [{ urlPattern: 'https://www.bungie.net/.*' }],
     },
   },
 

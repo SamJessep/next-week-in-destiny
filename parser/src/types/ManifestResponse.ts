@@ -9,13 +9,13 @@ export interface ManifestResponse {
 export interface Response {
   version: string;
   mobileAssetContentPath: string;
-  mobileGearAssetDataBases?: (MobileGearAssetDataBasesEntity)[] | null;
+  mobileGearAssetDataBases?: MobileGearAssetDataBasesEntity[] | null;
   mobileWorldContentPaths: MobileWorldContentPathsOrJsonWorldContentPaths;
   jsonWorldContentPaths: MobileWorldContentPathsOrJsonWorldContentPaths;
   jsonWorldComponentContentPaths: JsonWorldComponentContentPaths;
   mobileClanBannerDatabasePath: string;
   mobileGearCDN: MobileGearCDN;
-  iconImagePyramidInfo?: (null)[] | null;
+  iconImagePyramidInfo?: null[] | null;
 }
 export interface MobileGearAssetDataBasesEntity {
   version: number;
@@ -133,5 +133,4 @@ export interface MobileGearCDN {
   Gear: string;
   Shader: string;
 }
-export interface MessageData {
-}
+export interface MessageData {}

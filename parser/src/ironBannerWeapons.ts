@@ -8,5 +8,5 @@ export default [
   "FORGE'S PLEDGE",
   "OCCLUDED FINALITY",
   "FINITE IMPACTOR",
-  "ARCHON'S THUNDER"
-]
+  "ARCHON'S THUNDER",
+];
