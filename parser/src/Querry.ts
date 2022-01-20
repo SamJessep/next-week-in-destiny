@@ -33,6 +33,7 @@ const getSocketName = (socketHash:string)=>{
 }
 
 const isShitSocket = (socket:any,index:number)=>{
+  if(!socket.name) return true
   if(index>1){
     if(!Array.isArray(socket.plugs)) return true
   }

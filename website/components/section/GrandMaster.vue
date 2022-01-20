@@ -9,11 +9,15 @@
 
 <script>
 export default {
+  name:"grandmaster",
   props:["vendor"],
   computed:{
     mapImage(){
       return `https://www.bungie.net/${this.vendor.map.backdrop}`
     }
+  },
+  mounted(){
+    console.log(this.vendor)
   }
 }
 </script>

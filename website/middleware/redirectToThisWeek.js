@@ -1,4 +1,4 @@
-import weeks from '~/data/weeklyItems.json';
+import {weeks} from '~/data/appData.json';
 import {getThisWeek} from "~/util/dateHelpers"
 
 export default function({ redirect }) {

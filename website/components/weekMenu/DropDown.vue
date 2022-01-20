@@ -9,7 +9,7 @@
     <h2>Weeks</h2>
     <nuxt-link 
       class="week-item"
-      v-for="week in $store.state.weeks" 
+      v-for="week in $store.state.appData.weeks" 
       :key="week.date" 
       :to="'/weeks/'+week.date"
       @click.native="()=>setOpenState(false)"

@@ -1,8 +1,6 @@
 <template>
 <main v-if="'vendors' in this.weekData">
-  <SectionTrials :vendor="this.weekData.vendors.trials"/>
-  <SectionRaid :vendor="this.weekData.vendors.raid"/>
-  <SectionGrandMaster :vendor="this.weekData.vendors.gm"/>
+  <component v-for="vendorName in cleanedWeekData" :is="'section'+vendorName" :key="vendorName" :vendor="weekData.vendors[vendorName.toLowerCase()]" />
 </main>
 </template>
 
@@ -10,6 +8,15 @@
 export default {
   name:"LootPage",
   props:["weekData"],
+  computed:{
+    cleanedWeekData(){
+      console.log(Object.keys(this.weekData.vendors).filter(vendorName=>this.weekData.vendors[vendorName] != null))
+      return Object.keys(this.weekData.vendors).filter(vendorName=>this.weekData.vendors[vendorName] != null).map(n=>{
+        var newName = n[0].toUpperCase()+n.slice(1)
+        return newName 
+      })
+    }
+  }
 }
 </script>
 

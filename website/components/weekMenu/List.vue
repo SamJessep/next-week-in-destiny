@@ -3,7 +3,7 @@
     <h2 class="title">Weeks</h2>
     <ul>
       <li
-        v-for="week in $store.state.weeks" 
+        v-for="week in $store.state.appData.weeks" 
         :key="week.date" 
       >
         <nuxt-link 

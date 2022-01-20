@@ -1,4 +1,4 @@
-import weeks from './data/weeklyItems.json';
+import {weeks} from './data/appData.json';
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target

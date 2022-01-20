@@ -1,5 +1,5 @@
-import weeks from '~/data/weeklyItems.json';
+import data from '~/data/appData.json'
 
-export default function({ params, store }) {
-   store.commit("SET_WEEKS", weeks);
+export default function ({ params, store }) {
+  store.commit('SET_APP_DATA', data)
 }

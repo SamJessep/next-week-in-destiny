@@ -24,13 +24,14 @@ export default {
     const date = new Date(route.params.date)
     const dateString = date.toDateString().split(" ").filter((_,index)=>index!==0).join(" ")
     return {
-      thisWeeksData: getWeek(store.state.weeks, date),
+      thisWeeksData: getWeek(store.state.appData.weeks, date),
       date,
       dateString,
-      weeks:store.state.weeks
+      weeks:store.state.appData.weeks
     }
   },
   mounted(){
+    console.log(this.thisWeeksData)
     this.SET_HEADER_PROPS({
       week:this.thisWeeksData,
       title:getHeaderTitle(this.thisWeeksData, this.weeks)
