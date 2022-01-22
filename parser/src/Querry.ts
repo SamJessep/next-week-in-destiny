@@ -17,19 +17,28 @@ const getPlugs = (plugHash: string) => {
 
 const getPlugPerks = (json: string, plugHash: string) => {
   const plugs = getPlugs(plugHash);
-  return plugs.map((plug: any) => getPerk(json, plug.plugItemHash));
+  let plugNames:string[] = []
+  return plugs.map((plug: any) => {
+    return {
+      obtainable:plug.currentlyCanRoll,
+      ...getPerk(json, plug.plugItemHash)?.displayProperties
+    }
+  }).filter((plug:{name:string})=>{
+    if(plugNames.includes(plug.name)){
+      return false
+    }
+    plugNames.push(plug.name)
+    return true
+  });
 };
 
 const getPerk = (json: any, perkHash: string) => {
-  const perk = json[perkHash];
-  return perk?.displayProperties;
+  return json[perkHash];
 };
 
-const getSocketName = (socketHash: string) => {
-  var data = fs.readFileSync(SOCKET_DEFS);
-  const json = JSON.parse(data);
-  const socket = json[socketHash];
-  return socket?.plugWhitelist[0].categoryIdentifier;
+const getSocketName = (json:any, singleInitialItemHash: string) => {
+  if(json[singleInitialItemHash] === undefined) return ""
+  return getPerk(json,singleInitialItemHash).itemTypeDisplayName
 };
 
 const isShitSocket = (socket: any, index: number) => {
@@ -49,10 +58,10 @@ export const getAllPerks = (weaponHash: string) => {
   const cleanedSockets: any = [];
   sockets.forEach((socket: any, index: number) => {
     const isRandomSocket = "randomizedPlugSetHash" in socket;
-    const name = getSocketName(socket.socketTypeHash);
+    const name = getSocketName(json, socket.singleInitialItemHash);
     const plugs = isRandomSocket
       ? getPlugPerks(json, socket.randomizedPlugSetHash)
-      : getPerk(json, socket.singleInitialItemHash);
+      : getPerk(json, socket.singleInitialItemHash)?.displayProperties;
     const newSocket = { name, plugs, random: isRandomSocket };
     if (!isShitSocket(newSocket, index)) cleanedSockets.push(newSocket);
   });

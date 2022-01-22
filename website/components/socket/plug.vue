@@ -1,5 +1,5 @@
 <template>
-  <div class="perk">
+  <div class="perk" v-if="!sunset">
     <button :class="'plug-icon-box outer reset-styles ' + id" :title="name">
       <div class="plug-icon-container">
         <img :src="'https://www.bungie.net'+icon" :alt="name" class="plug-icon"/>
@@ -21,13 +21,14 @@
 <script>
 import tippy from 'tippy.js';
 export default {
-  props:["name", "description", "icon","iconSequences", "id", "columnName"],
+  props:["name", "description", "icon","iconSequences", "id", "columnName", "sunset"],
   data(){
     return{
       plugPopupOpen:false
     }
   },
   mounted(){
+    if(this.sunset) return
     const popupEl = this.$refs["popup"]
     popupEl.style.display = 'block';
 

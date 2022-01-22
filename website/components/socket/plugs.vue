@@ -7,6 +7,7 @@
     :icon="plug.icon"
     :id="'col'+column+'row'+index"
     :columnName="columnName"
+    :sunset="!plug.obtainable"
   />
 </div>
 <div v-else>
