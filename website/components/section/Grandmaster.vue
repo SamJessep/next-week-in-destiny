@@ -9,7 +9,6 @@
 
 <script>
 export default {
-  name:"grandmaster",
   props:["vendor"],
   computed:{
     mapImage(){
