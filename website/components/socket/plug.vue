@@ -1,11 +1,11 @@
 <template>
-  <div class="perk" v-if="!sunset">
+  <div class="perk" :style="`opacity:${(sunset ? '0.5' : '1')};`">
     <button :class="'plug-icon-box outer reset-styles ' + id" :title="name">
       <div class="plug-icon-container">
         <img :src="'https://www.bungie.net'+icon" :alt="name" class="plug-icon"/>
       </div>
     </button>
-    <div ref="popup" class="popup">
+    <div ref="popup" :class="`popup ${(sunset?'sunset':'')}`">
       <div class="header container">
         <h1>{{name.toUpperCase()}}</h1>
         <h2>{{columnName}}</h2>
@@ -13,6 +13,9 @@
       <div class="content container">
         <p>{{description}}</p>
       </div>
+        <div v-if="sunset" class="warning">
+          This perk is not currently available
+        </div>
     </div>
   </div>
 
@@ -28,7 +31,6 @@ export default {
     }
   },
   mounted(){
-    if(this.sunset) return
     const popupEl = this.$refs["popup"]
     popupEl.style.display = 'block';
 
@@ -75,6 +77,11 @@ export default {
 
 .popup{
   display: none;
+}
+
+.warning{
+  background-color: #f44336;
+  padding: 0.5rem;
 }
 
 

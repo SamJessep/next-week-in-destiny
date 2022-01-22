@@ -1,7 +1,7 @@
 <template>
 <div v-if="isSinglePlug">
   <socketPlug         
-    v-for="(plug,index) in plugs" :key="index"
+    v-for="(plug,index) in orderedPlugs" :key="index"
     :name="plug.name"
     :description="plug.description"
     :icon="plug.icon"
@@ -30,6 +30,10 @@ export default {
   computed:{
     isSinglePlug(){
       return Array.isArray(this.plugs)
+    },
+    orderedPlugs(){
+      const copyOfPlugs = [...this.plugs]
+      return copyOfPlugs.sort((a,b)=>a.obtainable<b.obtainable?1:-1)
     }
   }
 }
