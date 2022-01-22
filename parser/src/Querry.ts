@@ -1,7 +1,9 @@
 var fs = require("fs");
-export const PLUG_DEFS = "src/data/DestinyPlugSetDefinition.json";
-export const ITEM_DEFS = "src/data/DestinyInventoryItemDefinition.json";
-export const SOCKET_DEFS = "src/data/DestinySocketTypeDefinition.json";
+const path = require("path");
+
+export const PLUG_DEFS = __dirname+"/data/DestinyPlugSetDefinition.json";
+export const ITEM_DEFS = __dirname+"/data/DestinyInventoryItemDefinition.json";
+export const SOCKET_DEFS = __dirname+"/data/DestinySocketTypeDefinition.json";
 
 export const getItemByHash = (manifestType: string, hash: string) => {
   var data = fs.readFileSync(manifestType, { encoding: "utf8" });

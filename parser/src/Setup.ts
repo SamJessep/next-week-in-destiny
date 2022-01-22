@@ -1,5 +1,5 @@
 import { createWriteStream } from "fs";
-
+const path = require("path");
 const fs = require("fs");
 const download = require("download");
 const unzipper = require("unzipper");
@@ -9,6 +9,8 @@ const axios = require("axios").default;
 const MANIFEST_URL = "https://www.bungie.net/Platform/Destiny2/Manifest/";
 const BUNGIE_URL = "https://www.bungie.net/";
 const AUTH_HEADERS = { "X-API-Key": process.env.BUNGIE_API_KEY };
+const SAVE_DIR = __dirname+"/data/"
+
 export default async () => {
   const res = await axios.get(MANIFEST_URL, { headers: AUTH_HEADERS });
   await downloadAndUnzipManifest(res.data.Response.mobileWorldContentPaths.en);
@@ -18,7 +20,7 @@ export default async () => {
       headers: AUTH_HEADERS,
     });
     await fs.promises.writeFile(
-      "./src/data/" + key + ".json",
+      SAVE_DIR + key + ".json",
       JSON.stringify(manifestRes.data),
       { flag: "w" }
     );

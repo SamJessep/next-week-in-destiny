@@ -1,0 +1,26 @@
+{
+  "name": "next-week-in-destiny-data-hoster",
+  "version": "1.0.0",
+  "description": "web server to serve json files for next-week-in-destiny web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd ../parser && npm i &&  npx tsc ./src/index.ts && cd ../dataHoster && npm i && node index.js",
+    "dev": "node index.js",
+    "build": "cd ../parser &&  npx tsc ./src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamJessep/next-week-in-destiny.git"
+  },
+  "author": "Sam Jessep",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamJessep/next-week-in-destiny/issues"
+  },
+  "homepage": "https://github.com/SamJessep/next-week-in-destiny#readme",
+  "dependencies": {
+    "@hapi/hapi": "^20.2.1",
+    "@hapi/inert": "^6.0.5"
+  }
+}

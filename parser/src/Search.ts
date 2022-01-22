@@ -38,7 +38,7 @@ export const SearchManifest = async (
 };
 
 export const Details = async <T>(hash: number, defType: string): Promise<T> => {
-  return getItemByHash("src/data/" + defType + ".json", hash.toString());
+  return getItemByHash(__dirname+"/data/" + defType + ".json", hash.toString());
 };
 
 export const CreateWeaponJSON = async (
