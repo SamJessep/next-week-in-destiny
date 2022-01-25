@@ -14,9 +14,6 @@ export default {
     mapImage(){
       return `https://www.bungie.net/${this.vendor.map.backdrop}`
     }
-  },
-  mounted(){
-    console.log(this.vendor)
   }
 }
 </script>

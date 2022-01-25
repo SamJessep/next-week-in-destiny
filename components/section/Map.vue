@@ -24,7 +24,6 @@ export default {
   methods:{
     ...mapMutations(["SHOW_DIALOG","HIDE_DIALOG"]),
     maximiseMap(e){
-      console.log(e)
       this.SHOW_DIALOG({name:"OverlayMap",props:{img:this.img, alt:this.name}})
     }
   }

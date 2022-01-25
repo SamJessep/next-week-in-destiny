@@ -10,7 +10,6 @@ export default {
   props:["weekData"],
   computed:{
     cleanedWeekData(){
-      console.log(Object.keys(this.weekData.vendors).filter(vendorName=>this.weekData.vendors[vendorName] != null))
       return Object.keys(this.weekData.vendors).filter(vendorName=>this.weekData.vendors[vendorName] != null).map(n=>{
         var newName = n[0].toUpperCase()+n.slice(1)
         return newName 
