@@ -22,7 +22,8 @@
 </template>
 
 <script>
-import tippy from 'tippy.js';
+
+import tippy, {followCursor} from 'tippy.js';
 export default {
   props:["name", "description", "icon","iconSequences", "id", "columnName", "sunset"],
   data(){
@@ -38,6 +39,8 @@ export default {
       theme:"destiny-weapon-perk",
       content:popupEl,
       allowHTML: true,
+      duration:0,
+      interactive:true
     })
   }
 }

@@ -38,7 +38,7 @@ export default {
     }
   },
   mounted(){
-    console.log(this.error)
+    console.error(this.error)
     setTimeout(()=>this.open=true,1000)
   }
 }

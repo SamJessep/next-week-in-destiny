@@ -31,7 +31,6 @@ export default {
     }
   },
   mounted(){
-    console.log(this.thisWeeksData)
     this.SET_HEADER_PROPS({
       week:this.thisWeeksData,
       title:getHeaderTitle(this.thisWeeksData, this.weeks)
