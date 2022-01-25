@@ -7,6 +7,7 @@
     "dev": "nuxt",
     "dev-local": "nuxt --hostname=0.0.0.0 --port=3000",
     "build": "nuxt build",
+    "prod-build": "curl https://samjessep.github.io/next-week-in-destiny-parser/appData.json > data/appData.json && npm i && npm run generate",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
