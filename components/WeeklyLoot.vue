@@ -1,5 +1,5 @@
 <template>
-<main v-if="'vendors' in this.weekData">
+<main v-if="'vendors' in this.weekData" class="loot-section-container">
   <component v-for="vendorName in cleanedWeekData" :is="'section'+vendorName" :key="vendorName" :vendor="weekData.vendors[vendorName.toLowerCase()]" />
 </main>
 </template>
@@ -19,12 +19,15 @@ export default {
 }
 </script>
 
-<style>
-main{
+<style scoped lang="scss">
+.loot-section-container{
   grid-area: content;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
+  @include mobile{
+    justify-content: center;
+  }
 }
 </style>

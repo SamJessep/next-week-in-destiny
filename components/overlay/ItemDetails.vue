@@ -1,14 +1,17 @@
 <template>    
   <div class="roll-content">
       <div class="header">
-        <h2>{{title}}</h2>
+        <div class="title-bar">
+          <h2 class="title">{{title}}</h2>
+          <button data-button @click="closeModal()" class="close-btn">X</button>
+        </div>
         <div class="screenshot-box outer reset-styles" >
           <div class="screenshot-container">
-            <img class="screenshot" :src="'https://www.bungie.net/'+item.screenshot" :alt="'screenshot of '+item.name" />
+            <img class="screenshot" :src="'https://www.bungie.net'+item.screenshot" :alt="'screenshot of '+item.name" />
           </div>
         </div>
       </div>
-      <button data-button @click="closeModal()" class="close-btn">X</button>
+      
       <div class="contents">
         <SocketGrid :sockets="item.perks"/>
       </div>
@@ -22,27 +25,31 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+
 
 .close-btn{
   width: 2rem;
   height: 2rem;
   padding: 0;
-  margin: auto;
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem ;
 }
 
-.header>h2{
-  position: absolute;
-  z-index: 1;
-  margin: 0.5rem;
+.title-bar{
+    position: absolute;
+    z-index: 1;
+    margin: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    left: 10px;
+    right: 10px;
+    padding: 0.5rem;
 }
 
 .screenshot-box{
   width: 100%;
-  height: 100%;
+  max-height: 40vh;
   max-width: 100%;
   position: relative;
 }
@@ -53,11 +60,11 @@ export default {
 }
 
 .screenshot{
-  width: 100%;
   height: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
 }
 
 
@@ -68,16 +75,19 @@ export default {
   transform: translate(-50%,-50%);
   width: 80vw;
   height: 90vh;
-  background-color: #212833;
+  background-color: $darkGray2;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   overflow-y: scroll;
   overflow-x: hidden;
+  @include mobile{
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .contents{
-  flex-grow: 1;
+  position: relative;
 }
 </style>

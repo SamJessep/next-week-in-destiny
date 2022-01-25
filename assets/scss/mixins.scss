@@ -1,0 +1,8 @@
+$tablet-width: 700px;
+$desktop-width: 1024px;
+
+@mixin mobile {
+  @media only screen and (max-width: #{$tablet-width}) {
+    @content;
+  }
+}

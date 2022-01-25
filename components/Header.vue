@@ -11,22 +11,25 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
 header{
   grid-area: header;
   width: 100%;
   top:0;
   position: sticky;
-  background-color: #14191e;
+  background-color: $darkGray1;
   z-index:6;
   margin-bottom: 0.5rem;
   height: 80px;
+  display: flex;
+  align-items: center;
 }
 
 
-@media only screen and (max-width: 700px) {
+@include mobile {
   header{
-    top:72px;
+    top:71px;
   }
 }
 

@@ -15,20 +15,23 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    'vant/lib/index.css',
-    '~/assets/global.css',
-    '~/assets/global.small.css',
+    '~assets/scss/mixins.scss',
+    '~assets/scss/variables.scss',
+    '~/assets/scss/global.scss',
+    '~/assets/scss/global.small.scss',
   ],
-
+  styleResources: {
+    scss: [
+      '~assets/scss/mixins.scss',
+      '~assets/scss/variables.scss'
+    ]
+  },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['@/plugins/vant'],
-
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
-
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript
@@ -36,8 +39,8 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     '@nuxtjs/pwa',
+    '@nuxtjs/style-resources'
   ],
-
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
@@ -56,13 +59,11 @@ export default {
     },
     fallback: true,
   },
-
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: '/',
   },
-
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     icon: {
@@ -80,10 +81,8 @@ export default {
       runtimeCaching: [{ urlPattern: 'https://www.bungie.net/.*' }],
     },
   },
-
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     loaders: {
@@ -91,7 +90,7 @@ export default {
         implementation: require('sass'),
       },
       scss: {
-        implementation: require('sass'),
+        implementation: require('sass')
       },
     },
   },

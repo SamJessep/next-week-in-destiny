@@ -26,7 +26,7 @@ export default {
 </script>
 
 
-<style>
+<style lang="scss">
 .layout-container{
   display: grid;
   grid-template:
@@ -35,7 +35,7 @@ export default {
     auto/minmax(200px, 12vw)
 }
 
-@media only screen and (max-width: 700px) {
+@include mobile {
   .layout-container{
     grid-template:
       "menu"

@@ -1,5 +1,23 @@
-button{
+*{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-size: $bodyFontSize;
+}
 
+h1{
+  font-size: $header1FontSize;
+}
+
+h2{
+  font-size: $header2FontSize;
+}
+
+h3,summary{
+  font-size: $header3FontSize;
+}
+
+button{
   border: none;
   margin: 0;
   text-decoration: none;
@@ -10,6 +28,10 @@ button{
   text-align: center;
   -webkit-appearance: none;
   -moz-appearance: none;
+}
+
+ul{
+  text-decoration: none;
 }
 
 button:not(.link) {
@@ -39,11 +61,11 @@ button.reset-styles{
 }
 
 a{
-  color:rgb(242, 193, 97);
+  color:$gold1;
 }
 
 a:hover{
-  color:rgb(240, 221, 184);
+  color:$gold2;
 }
 
 img{
@@ -54,7 +76,7 @@ img{
 }
 
 body{
-  background-color:#14191e;
+  background-color:$darkGray1;
   color:white;
   font-family: -apple-system,BlinkMacSystemFont,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -111,31 +133,29 @@ summary:before {
 
 
 [data-panel]{
-  background-color: #181c25;
+  background-color: $darkGray2;
   margin: 1rem;
   padding: 0.5rem;
 }
 
 [data-panel][open]{
-  background-color: #212833;
+  background-color: $darkGray3;
 }
 [data-panel] summary{
   border-radius: 1rem;
   padding: 0.5rem;
   padding-left: 2.2rem;
-  color:rgb(242, 193, 97);
+  color:$gold1;
   user-select: none;
 }
 
 [data-panel] summary:hover{
   cursor: pointer;
-  /* background-color: #808080;
-  transition: background-color 0.6s cubic-bezier(0.5, 1, 0.89, 1); */
 }
 
 [data-button]{
   text-decoration: none;
-  background-color: #b78c25cc;
+  background-color: $gold3;
   color:white;
   font-size: 20px;
   text-transform: uppercase;
@@ -150,8 +170,8 @@ summary:before {
 }
 
 [data-button]:hover,[data-button]:focus{
-  background-color: #b78c25;
-  box-shadow: 0 20px 25px -15px rgb(0 0 0 / 25%);
+  background-color: $gold3;
+  box-shadow: 0 20px 25px -15px $shaddowColor;
   outline:none;
 }
 
@@ -167,7 +187,7 @@ summary:before {
   transition: 0.25s;
   transition-timing-function: cubic-bezier(0.69, 0, 0, 1) !important;
   animation-timing-function: cubic-bezier(0.69, 0, 0, 1) !important;
-  border-color: #ffce1f;
+  border-color: $gold4;
 }
 [data-button]:not(.disabled):hover::after, [data-button]:not(.disabled):focus::after{
   top: -5px;
@@ -178,8 +198,8 @@ summary:before {
 }
 
 [data-page-control]{
-  background-color: #747474bf;
-  color:#dfdfdf;
+  background-color: $gray1;
+  color:$lightGray1;
   padding: 0 10px;
   display: block;
   height: 100%;
@@ -190,13 +210,13 @@ summary:before {
 }
 
 [data-page-control]:hover,[data-page-control]:focus{
-  background-color: rgb(133 132 132);
-  color:#dfdfdf;
+  background-color: $gray2;
+  color:$lightGray1;
 }
 
 [data-page-control].disabled{  
-  background-color: #626262;
-  color: #7c7c7c;
+  background-color: $gray3;
+  color: $gray4;
   cursor: auto;
 }
 
@@ -221,7 +241,7 @@ summary:before {
 
 .map-name{
   display: block;
-  background-color: hsla(0deg 0deg 0deg 200%);
+  // background-color: hsla(0deg 0deg 0deg 200%);
   width: 100%;
   position: absolute;
   bottom:0;

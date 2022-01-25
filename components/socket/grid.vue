@@ -12,12 +12,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .grid,.column{
   display: flex;
 }
 
 .grid{
+  padding-top: 0.5rem;
   flex-direction: row;
 }
 

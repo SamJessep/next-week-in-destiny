@@ -15,41 +15,36 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 aside{
   grid-area: menu;
 }
 
 .mobile{
   display: none;
+  @include mobile{
+    display: block;
+  }
 }
 
 .desktop{
   display: block;
+  @include mobile{
+    display: none;
+  }
 }
 
 .menu{
-    position: sticky;
-    top: 80px;
-    width: 100%;
-    align-self: start;
-    left: 0;
-}
-
-@media only screen and (max-width: 700px) {
-  .mobile{
-    display: block;
-  }
-
-  .desktop{
-    display: none;
-  }
-
-  .menu{
+  position: sticky;
+  top: 80px;
+  width: 100%;
+  align-self: start;
+  left: 0;
+  @include mobile{
     top:0;
     width: auto;
     padding: 0.5rem;
-    background-color: #14191e;
+    background-color: $darkGray1;
     z-index: 10;
   }
 }

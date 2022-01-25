@@ -46,7 +46,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .perk{
     width: 50px;
     height: 50px;

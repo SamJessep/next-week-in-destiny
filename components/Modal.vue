@@ -42,7 +42,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .background{
   position: fixed;
   top: 0;

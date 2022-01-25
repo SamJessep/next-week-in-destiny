@@ -46,9 +46,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .container{
-  background-color: #181c25;
+  background-color: $darkGray2;
   padding-left: 0.5rem;
   padding-top: 0.85rem;
 }

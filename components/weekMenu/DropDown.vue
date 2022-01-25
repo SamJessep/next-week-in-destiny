@@ -1,6 +1,6 @@
 <template>
 <div class="weeks-container">
-  <div class="weeks-holder" :style="'top:'+ (open? '0' : '-110vh')" >
+  <div class="weeks-holder" :style="'bottom:'+ (open? '0' : '100%')" >
     <button @click="()=>setOpenState(false)" data-button class="close-btn">
       <span class="arrow up"/>
       <span class="btn-title">Close</span>
@@ -21,12 +21,14 @@
       <nuxt-link data-button
         class="sticky-button"
         :to="'/weeks/'+thisReset.date"
+        @click.native="()=>setOpenState(false)"
       >
         This Week
       </nuxt-link>
       <nuxt-link data-button
         class="sticky-button"
         :to="'/weeks/'+nextReset.date"
+        @click.native="()=>setOpenState(false)"
       >
         Next Week
       </nuxt-link>
@@ -79,10 +81,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 [data-button]{
-  /* height: min-content; */
-  margin: auto 0;
   display: flex;
   justify-content: space-between;
 }
@@ -110,7 +110,7 @@ export default {
 }
 
 .weeks-holder{
-  background-color: #212833;
+  background-color: $darkGray3;
   position: fixed;
   width: 100%;
   display: flex;
@@ -118,7 +118,7 @@ export default {
   z-index: 10;
   padding-top:0.5rem;
   border-radius: 0 0 0.5rem 0.5rem;
-	transition: top 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+	transition: bottom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100%;
@@ -140,8 +140,8 @@ export default {
 .arrow, .arrow::after, .arrow::before{
   width: 1rem;
   height: 1rem;
-  border-top: solid #212833 5px;
-  border-left: solid #212833 5px;
+  border-top: solid $darkGray3 5px;
+  border-left: solid $darkGray3 5px;
   content: "";
   transition: top 1s cubic-bezier(0.34, 1.56, 0.64, 1), left 1s cubic-bezier(0.34, 1.56, 0.64, 1),border-color 1s cubic-bezier(0.34, 1.56, 0.64, 1);
   display: block;
@@ -197,7 +197,7 @@ export default {
 .quick-bar{
   position: sticky;
   bottom: 0;
-  background-color: #212833;
+  background-color: $darkGray3;
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -215,8 +215,8 @@ export default {
 }
 
 [data-button].sticky-button.nuxt-link-active{
-  background-color: #626262;
-  color: #a1a1a1;
+  background-color: $gray3;
+  color: $gray5;
   cursor: auto;
   pointer-events: none;
 }

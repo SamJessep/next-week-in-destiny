@@ -44,7 +44,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .background{
   background-color: black;
   position: absolute;
