@@ -1,6 +1,6 @@
 <template>
   <div class="perk" >
-    <button :class="'plug-icon-box outer reset-styles ' + id + (selected?' selected':'')" :title="name" @click="select">
+    <button :class="'plug-icon-box outer reset-styles ' + id + (selected?' selected':'')" :title="name" @click="select" @contextmenu="preventCTXMenu">
       <div class="plug-icon-container">
         <img :src="'https://www.bungie.net'+icon" :alt="name" class="plug-icon" :style="`opacity:${(sunset ? '0.5' : '1')};`"/>
       </div>
@@ -40,11 +40,18 @@ export default {
       content:popupEl,
       allowHTML: true,
       duration:0,
+      touch: ['hold', 500]
     })
   },
   methods:{
     select(){
       this.onSelect(this.index, this.selected)
+    },
+    preventCTXMenu(event){
+      event.preventDefault();
+      event.stopPropagation(); // not necessary in my case, could leave in case stopImmediateProp isn't available? 
+      event.stopImmediatePropagation();
+      return false;
     }
   }
 }
@@ -66,7 +73,7 @@ export default {
   height: 100%;
   max-width: 100%;
   position: relative;
-  cursor: help;
+  cursor: pointer;
   &.selected{
     background-color: $gold1;
     border-radius: 10%;

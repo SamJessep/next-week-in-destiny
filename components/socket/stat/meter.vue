@@ -1,6 +1,6 @@
 <template>
 <div class="background">
-  <div class="inner" :style="`width:${baseStat}%`">
+  <div class="inner" :style="`width:${baseStat}%; max-width:100%;`">
     <div :class="`bonus ${this.hasBuff ? 'good':'bad'}`" :style="`left:${baseStat}%; width:${bonusAmount}%`"></div>
   </div>
 </div>

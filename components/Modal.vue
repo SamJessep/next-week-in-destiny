@@ -27,7 +27,6 @@ export default {
       handler() {
         if(this.shown){
           this.timeout = setTimeout(()=>{
-            console.log("a")
             this.open=true
           },50)
         }else{

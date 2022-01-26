@@ -8,7 +8,7 @@
         </label>
       </div>
       <div class="meters column">
-        <socketStatMeter class="stat-bar" v-for="stat in stats" :key="stat.name+'_bar'" :value="stat.value" max="100" min="0" :bonus="getBonus(stat.name)"/>
+        <socketStatMeter class="stat-bar" v-for="stat in stats" :key="stat.name+'_bar'" :value="stat.value" :max="stat.max" min="0" :bonus="getBonus(stat.name)"/>
       </div>
       <div class="amounts column">
         <p class="amount" v-for="stat in stats" :key="stat.name+'_amount'">
@@ -37,7 +37,6 @@ export default {
           else extraStats[stat]=plug.perkBonuses[stat].value
         }
       }
-      console.log(extraStats)
       return extraStats
     },
     getBonus(statName){
