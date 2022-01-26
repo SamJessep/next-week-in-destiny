@@ -1,8 +1,8 @@
 <template>
-  <div class="perk" :style="`opacity:${(sunset ? '0.5' : '1')};`">
-    <button :class="'plug-icon-box outer reset-styles ' + id" :title="name">
+  <div class="perk" >
+    <button :class="'plug-icon-box outer reset-styles ' + id + (selected?' selected':'')" :title="name" @click="select">
       <div class="plug-icon-container">
-        <img :src="'https://www.bungie.net'+icon" :alt="name" class="plug-icon"/>
+        <img :src="'https://www.bungie.net'+icon" :alt="name" class="plug-icon" :style="`opacity:${(sunset ? '0.5' : '1')};`"/>
       </div>
     </button>
     <div ref="popup" :class="`popup ${(sunset?'sunset':'')}`">
@@ -11,7 +11,7 @@
         <h2>{{columnName}}</h2>
       </div>
       <div class="content container">
-        <p>{{description}}</p>
+        <p class="perk-description">{{description}}</p>
       </div>
         <div v-if="sunset" class="warning">
           This perk is not currently available
@@ -25,7 +25,7 @@
 
 import tippy, {followCursor} from 'tippy.js';
 export default {
-  props:["name", "description", "icon","iconSequences", "id", "columnName", "sunset"],
+  props:["name", "description", "icon","iconSequences", "id", "columnName", "sunset", "selected", "onSelect","column", "index"],
   data(){
     return{
       plugPopupOpen:false
@@ -40,8 +40,12 @@ export default {
       content:popupEl,
       allowHTML: true,
       duration:0,
-      interactive:true
     })
+  },
+  methods:{
+    select(){
+      this.onSelect(this.index, this.selected)
+    }
   }
 }
 </script>
@@ -63,6 +67,10 @@ export default {
   max-width: 100%;
   position: relative;
   cursor: help;
+  &.selected{
+    background-color: $gold1;
+    border-radius: 10%;
+  }
 }
 
 .plug-icon-container{
@@ -80,6 +88,10 @@ export default {
 
 .popup{
   display: none;
+}
+
+.perk-description{
+  padding: 0.5rem 0;
 }
 
 .warning{
