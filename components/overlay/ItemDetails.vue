@@ -13,7 +13,8 @@
       </div>
       
       <div class="contents">
-        <SocketGrid :sockets="item.perks"/>
+        <SocketGrid :sockets="item.perks" :onSocketsChanged="plugsChanged"/>
+        <SocketStatGrid :stats="item.stats" :plugsSocketed="socketedPlugs"/>
       </div>
   </div>
 </template>
@@ -22,6 +23,23 @@
 <script>
 export default {
   props:["title", "closeModal", "item"],
+  mounted(){
+    this.socketedPlugs = this.item.perks.map(_=>-1)
+  },
+  data(){
+    return{
+      socketedPlugs:[]
+    }
+  },
+  methods:{
+    plugsChanged(plugs){
+      this.socketedPlugs=[]
+      setTimeout(()=>{
+
+        this.socketedPlugs=plugs
+      },100)
+    }
+  }
 }
 </script>
 
@@ -89,5 +107,10 @@ export default {
 
 .contents{
   position: relative;
+  display: flex;
+  justify-content: space-around;
+  @include mobile{
+    flex-direction: column-reverse;
+  }
 }
 </style>

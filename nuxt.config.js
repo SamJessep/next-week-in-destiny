@@ -21,11 +21,13 @@ export default {
     '~assets/scss/variables.scss',
     '~/assets/scss/global.scss',
     '~/assets/scss/global.small.scss',
+    '~/assets/scss/tippy.config.scss',
   ],
   styleResources: {
     scss: [
       '~assets/scss/mixins.scss',
-      '~assets/scss/variables.scss'
+      '~assets/scss/variables.scss',
+      '~/assets/scss/tippy.config.scss',
     ]
   },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
